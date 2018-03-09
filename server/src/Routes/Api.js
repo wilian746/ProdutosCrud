@@ -1,6 +1,5 @@
 'use strict';
 const express = require('express');
-const path = require('path')
 const ProdutoController = require('../Controllers/ProdutoController.js');
 
 module.exports = function (app) {

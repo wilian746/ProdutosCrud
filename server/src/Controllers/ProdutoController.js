@@ -13,7 +13,7 @@ exports.registroDeProduto = function (req, res, next) {
         if (err)
             return res.status(500).send({message: 'Erro ao criar Produto', error: err});
 
-        res.status(201).send({
+        return res.status(201).send({
             message: 'Produto criado com sucesso',
             Produto: produtos
         });
@@ -55,7 +55,7 @@ exports.getOneProduto = function (req, res, next) {
         if (err)
             return res.status(500).send({message: 'Erro ao buscar Produtos', error: err});
 
-        res.status(200).json(produto);
+        return res.status(200).json(produto);
     });
 };
 
@@ -83,7 +83,8 @@ exports.alterarProduto = function (req,res,next) {
     var marca = req.body.marca;
 
     Produto.findById({ _id:id_produto }, function (err,produto) {
-        if (err) return handleError(err);
+        if (err) 
+            return handleError(err);
         
         produto.set({
             nome: nome,

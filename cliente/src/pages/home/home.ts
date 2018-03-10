@@ -8,23 +8,27 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
   slides = [
     {
-      title: "Welcome to the Docs!",
-      description: "The <b>Ionic Component Documentation</b> showcases a number of useful components that are included out of the box with Ionic.",
+      title: "Bem Vindo ao Curso",
+      description: "A documentação do Ionic apresenta uma série de componentes úteis.",
       image: "assets/imgs/ica-slidebox-img-1.png",
     },
     {
-      title: "What is Ionic?",
-      description: "<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.",
+      title: "O que é Ionic?",
+      description: "Ionic Framework é um SDK de código aberto que permite aos desenvolvedores criar aplicativos móveis de alta qualidade com tecnologias da web como HTML, CSS, JAVASCRIPT.",
       image: "assets/imgs/ica-slidebox-img-2.png",
     },
     {
-      title: "What is Ionic Cloud?",
-      description: "The <b>Ionic Cloud</b> is a cloud platform for managing and scaling Ionic apps with integrated services like push notifications, native builds, user auth, and live updating.",
+      title: "O que é Ionic Cloud?",
+      description: "A <b> Ionic Cloud </b> é uma plataforma em nuvem para gerenciar e dimensionar aplicativos Ionic com serviços integrados, como notificações push, compilações nativas, autenticação de usuário e atualizações em tempo real.",
       image: "assets/imgs/ica-slidebox-img-3.png",
     }
-  ];
+  ]
   constructor(public navCtrl: NavController) {
 
   }
 
+  IrParaListagemProdutos(){
+    this.navCtrl.push('ProdutosPage')
+  }
+  
 }

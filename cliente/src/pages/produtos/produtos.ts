@@ -34,7 +34,6 @@ export class ProdutosPage {
   getAllProdutos() {
     this.produtosProvider.getProdutos().then((result) => {
       this.produtos = result
-      console.log(this.produtos)
     })
   }
   editar(id) {
@@ -52,7 +51,7 @@ export class ProdutosPage {
   }
 
   incluir() {
-
+    this.navCtrl.push('CriarProdutosPage')
   }
 
   mostraMenssagem(message: string, duration?: number) {

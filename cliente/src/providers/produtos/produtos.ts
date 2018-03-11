@@ -7,7 +7,6 @@ import { AppConfig } from '../app-config.provider';
 export class ProdutosProvider {
 
   constructor(public http: Http, public appConfig: AppConfig) {
-    console.log('Hello ProdutosProvider Provider');
   }
 
   getProdutos(){
@@ -61,6 +60,21 @@ export class ProdutosProvider {
         headers.append('Content-Type', 'application/json');
 
       this.http.put(this.appConfig.produtos + id, JSON.stringify(credential), {headers: headers})
+        .subscribe(res => {
+          let data = res.json();
+          resolve(data);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  criarProdutos(credential){
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+      this.http.post(this.appConfig.produtos, JSON.stringify(credential), {headers: headers})
         .subscribe(res => {
           let data = res.json();
           resolve(data);

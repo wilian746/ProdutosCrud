@@ -32,30 +32,14 @@ exports.getAllProduto = function (req, res, next) {
     });
 };
 
-exports.getOneProduto = function (req, res, next) {
-
-    var query = Produto.find()
-        
-    query.exec(function (err, produtos) {
-        if (err)
-            return res.status(500).send({error: err});
-
-        return res.status(200).json(produtos);
-    });
-};
 
 exports.getOneProduto = function (req, res, next) {
-    var obj = {};
-    obj['_id'] = mongoose.Types.ObjectId(req.params.id_produto);
-    var query = Produto.aggregate([
-        {$match: obj}
-    ])
-    
-    query.exec(function (err, produto) {
+    const id_produto = req.params.id_produto;
+    Produto.findById(id_produto, function (err, produto) {
         if (err)
-            return res.status(500).send({message: 'Erro ao buscar Produtos', error: err});
+            return res.status(500).send({message: 'Erro ao buscar Produto', error: err});
 
-        return res.status(200).json(produto);
+        return res.status(200).send(produto);
     });
 };
 

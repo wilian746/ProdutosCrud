@@ -1,0 +1,58 @@
+<ion-header id="header">
+  <ion-navbar>
+    <ion-title>Editar Prodtuo</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only clear color="dark" (click)="closeModal()">
+        <ion-icon name="md-close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding id="content" no-bounce>
+  <form padding [formGroup]="formEditar" (ngSubmit)="concluir(); $event.preventDefault()"
+    ion-fixed class="form">
+
+    <ion-list no-lines>
+      <ion-item *ngIf="error">
+        <p>Os dados informados não estão corretos.</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Nome</ion-label>
+        <ion-input type="text" spellcheck="false" autocapitalize="off" formControlName="nome"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="formEditar.get('nome').errors && formEditar.get('nome').dirty">
+        <p *ngIf="formEditar.get('nome').hasError('required')">Campo obrigatório</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Marca</ion-label>
+        <ion-input type="text" spellcheck="false" autocapitalize="off" formControlName="marca"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="formEditar.get('marca').errors && formEditar.get('marca').dirty">
+        <p *ngIf="formEditar.get('marca').hasError('required')">Campo obrigatório</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Valor</ion-label>
+        <ion-input type="number" formControlName="valor" ionic-password-show-hide></ion-input>
+      </ion-item>
+      <ion-item *ngIf="formEditar.get('valor').errors && formEditar.get('valor').dirty">
+        <p *ngIf="formEditar.get('valor').hasError('required')">Campo obrigatório</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Quantidade</ion-label>
+        <ion-input type="number" formControlName="quantidade" ionic-password-show-hide></ion-input>
+      </ion-item>
+      <ion-item *ngIf="formEditar.get('quantidade').errors && formEditar.get('quantidade').dirty">
+        <p *ngIf="formEditar.get('quantidade').hasError('required')">Campo obrigatório</p>
+      </ion-item>
+    </ion-list>
+
+    <button ion-button full type="submit" [disabled]="formEditar.invalid">Concluir</button>
+
+  </form>
+</ion-content>

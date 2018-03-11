@@ -30,5 +30,5 @@ export class HomePage {
   IrParaListagemProdutos(){
     this.navCtrl.push('ProdutosPage')
   }
-  
+
 }

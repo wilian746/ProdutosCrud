@@ -5,28 +5,28 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
+  <ion-card *ngFor="let produto of produtos">
     <ion-card-header>
       <div class="titulo">
-        <span>Titulo - Marca</span>
+        <span>{{produto.nome}} - {{produto.marca}}</span>
       </div>
     </ion-card-header>
 
     <ion-card-content>
       <img src="assets/imgs/produtos.png">
-      <p><b>Valor: </b> R$ 12,50</p>
-      <p><b>Quantidade: </b> 5</p>
+      <p><b>Valor: </b> R$ {{produto.valor}}</p>
+      <p><b>Quantidade: </b>{{produto.quantidade}}</p>
     </ion-card-content>
 
     <ion-grid>
         <ion-row justify-content-center justify-content-around>
           <ion-col col-3>
-            <button  ion-button color="primary" clear icon-only>
+            <button  ion-button color="primary" clear icon-only (click)="editar(produto._id)">
               <ion-icon ios="md-create" md="md-create"></ion-icon>
             </button>
           </ion-col>
           <ion-col col-3>
-            <button ion-button color="danger" clear icon-only>
+            <button ion-button color="danger" clear icon-only (click)="deletar(produto._id)">
               <ion-icon ios='md-trash' name='md-trash'></ion-icon>
             </button>
           </ion-col>
@@ -35,7 +35,7 @@
   </ion-card>
 
   <ion-fab right bottom class="fab-create">
-    <button ion-fab color="dark" class="button-create">
+    <button ion-fab color="dark" class="button-create" (click)="incluir()">
       <ion-icon ios='md-add' name='md-add'></ion-icon>
     </button>
   </ion-fab>

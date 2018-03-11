@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
+import { ProdutosProvider } from '../../providers/produtos/produtos';
+import { AlterarProdutosComponent } from '../../components/alterar-produtos/alterar-produtos';
 
 /**
  * Generated class for the ProdutosPage page.
@@ -15,11 +17,51 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProdutosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public produtos: any = [];
+  public resposta: any = {};
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public toastCtrl: ToastController,
+    public produtosProvider: ProdutosProvider,
+    public modal: ModalController,) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProdutosPage');
+    this.getAllProdutos()
   }
 
+  getAllProdutos() {
+    this.produtosProvider.getProdutos().then((result) => {
+      this.produtos = result
+      console.log(this.produtos)
+    })
+  }
+  editar(id) {
+    const AlterarProdutosModal = this.modal.create(AlterarProdutosComponent, {id: id});
+    AlterarProdutosModal.present();
+  }
+
+  deletar(id) {
+    this.produtosProvider.deleteProdutos(id).then(() => {
+      this.mostraMenssagem('Produto excluído com sucesso', 3000)
+      setTimeout(() => {
+        this.getAllProdutos()
+      }, 200);
+    })
+  }
+
+  incluir() {
+
+  }
+
+  mostraMenssagem(message: string, duration?: number) {
+    let menssagem = this.toastCtrl.create({
+      message: message,
+      duration: duration,
+      showCloseButton: true,
+      closeButtonText: "Ok"
+    });
+    menssagem.present();
+  }
 }

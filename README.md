@@ -6,6 +6,7 @@ Basicamente este projeto está focado no desenvolvimento Front-End e Back-End pa
 ## Instalação
 
 Certifique-se que você tenha instalado o [NodeJs](https://nodejs.org/en/download/) em sua máquina.
+Certifique-se que você tenha instalado o [IONIC](https://ionicframework.com/docs/intro/installation/) em sua máquina.
 
 Clone o projeto para sua máquina:
 ```bash
@@ -31,7 +32,7 @@ $ npm start
 ```
 - Para rodar o projeto ionic, com o terminal aberto vá até a pasta cliente execute:
 ```bash 
-$ npm start
+$ ionic serve -l
 ```
 
 #### CONFIGURANDO CONEXÕES NO SERVIDOR

@@ -38,12 +38,14 @@ export class AlterarProdutosComponent {
   getOneProduto(){
     this.showLoader()
     this.produtos.getOneProduto(this.idProduto).then((res)=>{
-      this.formEditar.setValue({
-        nome: res.nome,
-        marca: res.marca,
-        valor: res.valor,
-        quantidade: res.quantidade
-      })
+      setTimeout(()=>{
+        this.formEditar.setValue({
+          nome: res.nome,
+          marca: res.marca,
+          valor: res.valor,
+          quantidade: res.quantidade
+        })
+      }, 500)
       this.loading.dismiss()
     })
   }
@@ -51,7 +53,9 @@ export class AlterarProdutosComponent {
     this.showLoader();
     this.produtos.alterarProdutos(this.idProduto, this.formEditar.value).then((res)=>{
       this.loading.dismiss()
-      this.mostraMenssagem(res.message, 2500)
+      setTimeout(()=>{
+        this.mostraMenssagem(res.message, 2500)
+      },500)
       this.navCtrl.setRoot('ProdutosPage')
     })
   }

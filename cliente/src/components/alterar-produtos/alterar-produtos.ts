@@ -16,6 +16,8 @@ export class AlterarProdutosComponent {
   private formEditar: FormGroup;
   private idProduto: any;
   public loading: any;
+  public resultGetOne: any;
+  public resultEdit: any;
   constructor(
     public view: ViewController,
     public fb: FormBuilder,
@@ -38,24 +40,22 @@ export class AlterarProdutosComponent {
   getOneProduto(){
     this.showLoader()
     this.produtos.getOneProduto(this.idProduto).then((res)=>{
-      setTimeout(()=>{
-        this.formEditar.setValue({
-          nome: res.nome,
-          marca: res.marca,
-          valor: res.valor,
-          quantidade: res.quantidade
-        })
-      }, 500)
+      this.resultGetOne = res
+      this.formEditar.setValue({
+        nome: this.resultGetOne.nome,
+        marca: this.resultGetOne.marca,
+        valor: this.resultGetOne.valor,
+        quantidade: this.resultGetOne.quantidade
+      })
       this.loading.dismiss()
     })
   }
   concluir(){
     this.showLoader();
     this.produtos.alterarProdutos(this.idProduto, this.formEditar.value).then((res)=>{
+      this.resultEdit = res
       this.loading.dismiss()
-      setTimeout(()=>{
-        this.mostraMenssagem(res.message, 2500)
-      },500)
+      this.mostraMenssagem(this.resultEdit.message, 2500)
       this.navCtrl.setRoot('ProdutosPage')
     })
   }

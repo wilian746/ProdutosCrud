@@ -8,7 +8,6 @@ import { MyApp } from './app.component';
 import { ProdutosProvider } from '../providers/produtos/produtos';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { AppConfig } from '../providers/app-config.provider';
 import { AlterarProdutosComponent } from '../components/alterar-produtos/alterar-produtos';
 import { HomePage } from '../pages/home/home';
 
@@ -34,8 +33,7 @@ import { HomePage } from '../pages/home/home';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ProdutosProvider,
-    AppConfig
+    ProdutosProvider
   ]
 })
 export class AppModule {}

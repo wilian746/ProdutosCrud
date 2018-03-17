@@ -18,6 +18,7 @@ import { ProdutosProvider } from '../../providers/produtos/produtos';
 export class CriarProdutosPage {
   private formProduto: FormGroup;
   public loading
+  public resultCreate: any;
   constructor(
     public fb: FormBuilder,
     public produtos: ProdutosProvider,
@@ -40,8 +41,9 @@ export class CriarProdutosPage {
   submit(){
     this.showLoader();
     this.produtos.criarProdutos(this.formProduto.value).then((res)=>{
+      this.resultCreate = res
       this.loading.dismiss()
-      this.mostraMenssagem(res.message, 2500)
+      this.mostraMenssagem(this.resultCreate.message, 2500)
       this.navCtrl.setRoot('ProdutosPage')
     })
   }

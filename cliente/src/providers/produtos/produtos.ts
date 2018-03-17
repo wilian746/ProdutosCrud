@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { AppConfig } from '../app-config.provider';
 
 @Injectable()
 export class ProdutosProvider {
 
-  constructor(public http: Http, public appConfig: AppConfig) {
+  constructor(public http: Http) {
   }
 
   getProdutos(){
@@ -14,9 +13,9 @@ export class ProdutosProvider {
       let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-      this.http.get(this.appConfig.produtos, {headers: headers})
-        .subscribe(res => {
-          let data = res.json();
+      this.http.get('http://54.207.115.112:8080/produto/', {headers: headers})
+        .map(res=> res.json())
+        .subscribe(data => {
           resolve(data);
         }, (err) => {
           reject(err);
@@ -29,9 +28,9 @@ export class ProdutosProvider {
       let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-      this.http.delete(this.appConfig.produtos + id, {headers: headers})
-        .subscribe(res => {
-          let data = res.json();
+      this.http.delete('http://54.207.115.112:8080/produto/' + id, {headers: headers})
+        .map(res=> res.json())
+        .subscribe(data => {
           resolve(data);
         }, (err) => {
           reject(err);
@@ -44,9 +43,9 @@ export class ProdutosProvider {
       let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-      this.http.get(this.appConfig.produtos + id, {headers: headers})
-        .subscribe(res => {
-          let data = res.json();
+      this.http.get('http://54.207.115.112:8080/produto/' + id, {headers: headers})
+        .map(res=> res.json())
+        .subscribe(data => {
           resolve(data);
         }, (err) => {
           reject(err);
@@ -59,9 +58,9 @@ export class ProdutosProvider {
       let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-      this.http.put(this.appConfig.produtos + id, JSON.stringify(credential), {headers: headers})
-        .subscribe(res => {
-          let data = res.json();
+      this.http.put('http://54.207.115.112:8080/produto/' + id, JSON.stringify(credential), {headers: headers})
+        .map(res=> res.json())
+        .subscribe(data => {
           resolve(data);
         }, (err) => {
           reject(err);
@@ -74,9 +73,9 @@ export class ProdutosProvider {
       let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-      this.http.post(this.appConfig.produtos, JSON.stringify(credential), {headers: headers})
-        .subscribe(res => {
-          let data = res.json();
+      this.http.post('http://54.207.115.112:8080/produto/', JSON.stringify(credential), {headers: headers})
+        .map(res=> res.json())
+        .subscribe(data => {
           resolve(data);
         }, (err) => {
           reject(err);

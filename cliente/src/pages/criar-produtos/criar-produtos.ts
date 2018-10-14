@@ -2,13 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ProdutosProvider } from '../../providers/produtos/produtos';
-
-/**
- * Generated class for the CriarProdutosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import Moment from 'moment'
 
 @IonicPage()
 @Component({
@@ -18,6 +12,7 @@ import { ProdutosProvider } from '../../providers/produtos/produtos';
 export class CriarProdutosPage {
   private formProduto: FormGroup;
   public loading
+  public moment: any = Moment;
   public resultCreate: any;
   constructor(
     public fb: FormBuilder,
@@ -28,10 +23,10 @@ export class CriarProdutosPage {
     public toastCtrl: ToastController) {
 
       this.formProduto = fb.group({
-        nome: [null, [Validators.required]],
-        marca: [null, [Validators.required]],
-        valor: [null, [Validators.required]],
-        quantidade: [null, [Validators.required]]
+        name: [null, [Validators.required]],
+        quantity: [null, [Validators.required]],
+        value: [null, [Validators.required]],
+        validity: [null, [Validators.required]]
       })
   }
 

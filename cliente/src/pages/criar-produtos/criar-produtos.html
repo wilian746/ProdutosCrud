@@ -24,38 +24,38 @@
 
       <ion-item>
         <ion-label floating>Nome</ion-label>
-        <ion-input type="text" spellcheck="false" autocapitalize="off" formControlName="nome"></ion-input>
+        <ion-input type="text" spellcheck="false" autocapitalize="off" formControlName="name"></ion-input>
       </ion-item>
-      <ion-item *ngIf="formProduto.get('nome').errors && formProduto.get('nome').dirty">
-        <p *ngIf="formProduto.get('nome').hasError('required')">Campo obrigatório</p>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating>Marca</ion-label>
-        <ion-input type="text" spellcheck="false" autocapitalize="off" formControlName="marca"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="formProduto.get('marca').errors && formProduto.get('marca').dirty">
-        <p *ngIf="formProduto.get('marca').hasError('required')">Campo obrigatório</p>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating>Valor</ion-label>
-        <ion-input type="number" formControlName="valor" ionic-password-show-hide></ion-input>
-      </ion-item>
-      <ion-item *ngIf="formProduto.get('valor').errors && formProduto.get('valor').dirty">
-        <p *ngIf="formProduto.get('valor').hasError('required')">Campo obrigatório</p>
+      <ion-item *ngIf="formProduto.get('name').errors && formProduto.get('name').dirty">
+        <p *ngIf="formProduto.get('name').hasError('required')">Campo obrigatório</p>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Quantidade</ion-label>
-        <ion-input type="number" formControlName="quantidade" ionic-password-show-hide></ion-input>
+        <ion-input type="number" spellcheck="false" autocapitalize="off" formControlName="quantity"></ion-input>
       </ion-item>
-      <ion-item *ngIf="formProduto.get('quantidade').errors && formProduto.get('quantidade').dirty">
-        <p *ngIf="formProduto.get('quantidade').hasError('required')">Campo obrigatório</p>
+      <ion-item *ngIf="formProduto.get('quantity').errors && formProduto.get('quantity').dirty">
+        <p *ngIf="formProduto.get('quantity').hasError('required')">Campo obrigatório</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Valor</ion-label>
+        <ion-input type="number" formControlName="value" placeholder="123.99"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="formProduto.get('value').errors && formProduto.get('value').dirty">
+        <p *ngIf="formProduto.get('value').hasError('required')">Campo obrigatório</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Data de validade</ion-label>
+        <ion-datetime doneText="Ok" cancelText="Cancelar" displayFormat="DD/MM/YYYY" formControlName="validity"></ion-datetime>
+      </ion-item>
+      <ion-item *ngIf="formProduto.get('validity').errors && formProduto.get('validity').dirty">
+        <p *ngIf="formProduto.get('validity').hasError('required')">Campo obrigatório</p>
       </ion-item>
     </ion-list>
 
-    <button ion-button full type="submit" [disabled]="formProduto.invalid">Enviar</button>
+    <button ion-button full type="submit" [disabled]="formProduto.invalid">Criar novo produto</button>
 
   </form>
 </ion-content>

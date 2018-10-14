@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="formLogin" (ngSubmit)="login(); $event.preventDefault()" padding>
+
+    <ion-list no-lines>
+      <ion-item *ngIf="error" class="error">
+        <p>Os dados informados não estão corretos.</p>
+      </ion-item>
+
+      <div>
+        <ion-item>
+          <ion-label floating>Usuário</ion-label>
+
+          <ion-input type="text" spellcheck="false" autocapitalize="off" formControlName="username"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="formLogin.get('username').errors && formLogin.get('username').dirty">
+          <p class="error" *ngIf="formLogin.get('username').hasError('required')">Campo obrigatório</p>
+        </ion-item>
+      </div>
+
+      <div>
+        <ion-item>
+          <ion-label floating>Senha</ion-label>
+
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="formLogin.get('password').errors && formLogin.get('password').dirty">
+          <p class="error" *ngIf="formLogin.get('password').hasError('required')">Campo obrigatório</p>
+        </ion-item>
+      </div>
+
+    </ion-list>
+
+    <button class="botao" ion-button full type="submit" [disabled]="formLogin.invalid">Entrar</button>
+
+  </form>
+
+  <button class="botao2" ion-button full color="light" (click)="register()">Cadastrar novo usuário</button>
+
+</ion-content>

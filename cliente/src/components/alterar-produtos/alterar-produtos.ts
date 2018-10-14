@@ -27,10 +27,10 @@ export class AlterarProdutosComponent {
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController) {
     this.formEditar = fb.group({
-      nome: [null, [Validators.required]],
-      marca: [null, [Validators.required]],
-      valor: [null, [Validators.required]],
-      quantidade: [null, [Validators.required]]
+      name: [null, [Validators.required]],
+      quantity: [null, [Validators.required]],
+      value: [null, [Validators.required]],
+      validity: [null, [Validators.required]]
     })
   }
   ionViewDidLoad() {
@@ -41,11 +41,12 @@ export class AlterarProdutosComponent {
     this.showLoader()
     this.produtos.getOneProduto(this.idProduto).then((res)=>{
       this.resultGetOne = res
+      console.log(this.resultGetOne)
       this.formEditar.setValue({
-        nome: this.resultGetOne.nome,
-        marca: this.resultGetOne.marca,
-        valor: this.resultGetOne.valor,
-        quantidade: this.resultGetOne.quantidade
+        name: this.resultGetOne.product.name,
+        quantity: this.resultGetOne.product.quantity,
+        value: this.resultGetOne.product.value,
+        validity: this.resultGetOne.product.validity
       })
       this.loading.dismiss()
     })

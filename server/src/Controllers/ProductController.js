@@ -40,7 +40,7 @@ exports.getOneProduct = (req, res, next) => {
     if (!product || Object.keys(product).length === 0)
       return res.status(404).send('Product not found!')
 
-    return res.status(200).json({product: products})
+    return res.status(200).json({product: product})
   })
 }
 

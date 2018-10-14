@@ -1,6 +1,12 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Produtos</ion-title>
+    <ion-title (click)="getAllProdutos()">Produtos</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only color="dark" (click)="logout()">
+        <ion-icon name="md-power"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -8,14 +14,15 @@
   <ion-card *ngFor="let produto of produtos">
     <ion-card-header>
       <div class="titulo">
-        <span>{{produto.nome}} - {{produto.marca}}</span>
+        <span>{{produto.name}}</span>
       </div>
     </ion-card-header>
 
     <ion-card-content>
       <img src="assets/imgs/produtos.png">
-      <p><b>Valor: </b> R$ {{produto.valor}}</p>
-      <p><b>Quantidade: </b>{{produto.quantidade}}</p>
+      <p><b>Valor: </b> R$ {{parseFloatList(produto.value)}}</p>
+      <p><b>Quantidade: </b>{{produto.quantity}}</p>
+      <p><b>Validade: </b> {{moment(produto.validity).add(3, 'hours').format('DD/MM/YYYY')}}</p>
     </ion-card-content>
 
     <ion-grid>

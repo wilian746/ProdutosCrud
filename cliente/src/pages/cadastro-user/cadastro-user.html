@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cadastro de usuário</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="formRegister" (ngSubmit)="submit(); $event.preventDefault()" padding>
+
+    <ion-list no-lines>
+      <ion-item *ngIf="error" class="error">
+        <p>Os dados informados não estão corretos.</p>
+      </ion-item>
+
+      <div>
+        <ion-item>
+          <ion-label floating>Usuário</ion-label>
+
+          <ion-input type="text" spellcheck="false" autocapitalize="off" formControlName="username"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="formRegister.get('username').errors && formRegister.get('username').dirty">
+          <p class="error" *ngIf="formRegister.get('username').hasError('required')">Campo obrigatório</p>
+        </ion-item>
+      </div>
+
+      <div>
+        <ion-item>
+          <ion-label floating>Senha</ion-label>
+
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="formRegister.get('password').errors && formRegister.get('password').dirty">
+          <p class="error" *ngIf="formRegister.get('password').hasError('required')">Campo obrigatório</p>
+        </ion-item>
+      </div>
+
+    </ion-list>
+
+    <button class="botao" ion-button full type="submit" [disabled]="formRegister.invalid">Cadastrar</button>
+
+  </form>
+
+</ion-content>

@@ -19,8 +19,8 @@ app.set('port', process.env.PORT || 3000)
 app.use(compression())
 app.use(logger('dev'))
 app.use(cors({
-    origin: '*',
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin']
+  origin: '*',
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin']
 }))
 
 app.use(errorHandler())
@@ -30,20 +30,21 @@ app.use(bodyParser.urlencoded({
     extended: true
 }))
 
-mongoose.connect(process.env.MONGODB_URI).then(
-    () => {
-        console.log('Database connected successfully! ')
-    },
-    err => {
-        console.error('Error connected DataBase: ', err)
-        process.exit(1)
-    }
+
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true }).then(
+  () => {
+    console.log('Database connected successfully! ')
+  },
+  err => {
+    console.error('Error connected DataBase: ', err)
+    process.exit(1)
+  }
 )
 
 require('./src/Routes/index.js')(app)
 
 server.listen(app.get('port'), function () {
-    console.log('\n-> Server running on port ' + app.get('port') + ' in ' + app.get('env') + ' mode ' + '\n')
+  console.log('\n-> Server running on port ' + app.get('port') + ' in ' + app.get('env') + ' mode ' + '\n')
 })
 
 /* ---------------------------------------------------------------------------------- */

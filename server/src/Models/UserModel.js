@@ -3,7 +3,8 @@ var mongoose = require('mongoose')
 var UserSchema = new mongoose.Schema({
   username: {
     type: String,
-    index: {unique: true},
+    index: true,
+    unique: true,
     required: [true, 'username is required']
   },
   password: {
@@ -11,6 +12,7 @@ var UserSchema = new mongoose.Schema({
     required: [true, 'password is required']
   }
 }, {
+  autoIndex: false,
   timestamps: true
 })
 

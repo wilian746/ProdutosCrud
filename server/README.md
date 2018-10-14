@@ -64,11 +64,5 @@ $ PORT=8080
 
 ```bash
 $ http://localhost:8080/api-docs/
-```
-#### [Web](http://18.231.124.41:8080/api-docs/)
-
-```bash
-$ http://18.231.124.41:8080/api-docs/
-```
 
 ## Obrigado!
